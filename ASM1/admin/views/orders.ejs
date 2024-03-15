@@ -1,0 +1,42 @@
+<%- include ('header'); %>
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Đơn Hàng</h6>
+            <div class="mt-3">
+                <button class="btn btn-success" data-toggle="modal" data-target="#addCategoryModal">
+                    <i class="fas fa-plus-circle"></i>
+                    Thêm
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table
+                    class="table table-bordered"
+                    id="dataTable"
+                    width="100%"
+                    cellspacing="0"
+                >
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên Khách Hàng</th>
+                            <th>Địa Chỉ</th>
+                            <th>Email</th>
+                            <th>Số Diện Thoại</th>
+                            <th>Ngày Đặt Hàng</th>
+                            <th>Trạng Thái</th>
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody id="get_order">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ('footer'); %>
