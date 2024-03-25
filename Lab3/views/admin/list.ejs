@@ -1,0 +1,58 @@
+<%- include('header'); %>
+
+<div class="container mt-5">
+    <h1>Edit</h1>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(product => { %>
+                <tr>
+                    <td><img src="/images/<%= product.image %>" alt="<%= product.name %>" width="50"></td>
+                    <td><%= product.name %></td>
+                    <td><%= product.description %></td>
+                    <td><%= product.price %></td>
+                    <td>
+                        <a href="/edit/<%= product.id %>" class="btn btn-primary">Edit</a>
+                        <button class="btn btn-danger" onclick="confirmDelete('<%= product.id %>')">Xoá</button>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+            <% if (typeof successMessage !== 'undefined' && successMessage) { %>
+                <div class="alert alert-success" role="alert">
+                    <%= successMessage %>
+                </div>
+            <% } %>
+        </table>
+    </div>
+</div>
+<%- include('footer'); %>
+
+<script>
+    function confirmDelete(productId) {
+        if (confirm("Bạn có chắc chắn muốn xoá sản phẩm này không?")) {
+            fetch('/delete/' + productId, {
+                method: 'POST',
+            })
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    }
+
+  
+</script>

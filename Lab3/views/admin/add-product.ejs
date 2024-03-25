@@ -1,0 +1,43 @@
+<%- include ('header'); %>
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Thêm mới sản phẩm</h5>
+            <form action="/addnew" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price:</label>
+                    <input type="number" class="form-control" id="price" name="price" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category:</label>
+                    <select class="form-select" id="category" name="category" required>
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.id %>"><%= category.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="productImage" class="form-label">Image:</label>
+                    <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add Product</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('footer');  %>
